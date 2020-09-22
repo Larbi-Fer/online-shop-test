@@ -19,7 +19,7 @@
             <div class="contentBx">
                 <h3><a href="/product/<%= product._id %>"> <%= product.name %> </a></h3>
                 <h2 class="price">Price: <%= product.price %>$</h2>
-                <form action="/cart">
+                <form action="/cart" method="POST" class="form-amount">
                     <input type="number" name="amount" value="1" class="frm">
                     <button type="submit" class="buy">Add to cart</button>
                 </form>
