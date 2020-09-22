@@ -11,7 +11,7 @@ label.logo{
     color: white;
     font-size: 35px;
     line-height: 80px;
-    padding: 0 100px;
+    padding: 0 60px;
     font-weight: bold;
 }
 .nav ul{
@@ -67,7 +67,7 @@ label.logo{
 .check{
     display: none;
 }
-@media ( max-width: 952px ){
+@media ( max-width: 1163px ){
     label.logo{
         font-size: 30px;
         padding-left: 50px;
@@ -79,7 +79,7 @@ label.logo{
     }
     
 }
-@media ( max-width: 858px){
+@media ( max-width: 1095px){
     .checkbtn{
         display: block;
     }

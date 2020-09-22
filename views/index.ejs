@@ -1,7 +1,16 @@
 <%- include('parts/header.ejs') %> 
 <%- include('parts/navbar.ejs') %> 
-
+<form action="/" method="GET" style="text-align: center;">
+    <select name="category" class="frm" style="width: 85%;">
+        <option value="all">All</option>
+        <option value="clothes">Clothes</option>
+        <option value="phones">Phones</option>
+        <option value="computers">Computers</option>
+    </select>
+    <button type="submit" class="btn-pr">Fillter</button>
+</form>
 <div class="container">
+    
     <% for( let product of products ) { %>
         <!--<div class="box">
             <h2 class="name"><a href="/product/<%= product._id %>"> <%= product.name %> </a></h2>
