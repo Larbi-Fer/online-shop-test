@@ -175,8 +175,8 @@
 .card .imgBx img{
     min-width: 50%;
     max-width: 78%;
-    transition: 0.5s;
     max-width: 180px;
+    transition: 0.5s;
 }
 .card:hover .imgBx img{
     min-width: 20%;
