@@ -10,4 +10,15 @@ body{
     align-items: center;
     min-height: 100vh;
     background: #131313;
+    margin-top: 100px;
+}
+.btn-pr{
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #03a9f4;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px 0;
 }
