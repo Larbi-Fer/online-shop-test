@@ -10,14 +10,14 @@ const productSchema = mongoose.Schema({
     category: String
 })
 
-const Product = mongoose.model( 'product', productSchema )
+const Product = mongoose.model('product', productSchema)
 
 exports.getAllProducts = () => {
 
     // connect to db
     // get Products
     // disconnect
-    
+
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL).then(() => {
             return Product.find({})
@@ -32,11 +32,11 @@ exports.getAllProducts = () => {
 exports.getProductsByCategory = (category) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL).then(() => {
-            return Product.find({category: category})
+            return Product.find({ category: category })
         }).then(prosucts => {
             mongoose.disconnect()
             resolve(prosucts)
-        }).catch( err => reject(err) )
+        }).catch(err => reject(err))
     })
 }
 
@@ -46,6 +46,22 @@ exports.getProductById = (id) => {
             .connect(DB_URL)
             .then(() => {
                 return Product.findById(id);
+            })
+            .then(product => {
+                mongoose.disconnect()
+                resolve(product)
+            })
+            .catch(err => reject(err))
+    })
+}
+
+
+exports.getFirstProduct = () => {
+    return new Promise((resolve, reject) => {
+        mongoose
+            .connect(DB_URL)
+            .then(() => {
+                return Product.findOne({});
             })
             .then(product => {
                 mongoose.disconnect()

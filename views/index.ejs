@@ -11,31 +11,36 @@
 </form>
 <div class="container">
     
-    <% for( let product of products ) { %>
-        <!--<div class="box">
-            <h2 class="name"><a href="/product/<%= product._id %>"> <%= product.name %> </a></h2>
-            <a href="#" class="buy">Buy Now</a>
-            <div class="circle"></div>
-            <img src="<%= product.image %>"  class="product">
-            <div class="before">NIKE</div>
-            <div class="after">SHOES</div>
-        </div>-->
-
-        <div class="card">
-            <div class="imgBx">
-                <img src="<%= product.image %>">
+    <% if (products.length === 0) { %>
+        <h1 style="color: #fff;">there is no products</h1>
+    <% } else { %>
+        <% for( let product of products ) { %>
+            <!--<div class="box">
+                <h2 class="name"><a href="/product/<%= product._id %>"> <%= product.name %> </a></h2>
+                <a href="#" class="buy">Buy Now</a>
+                <div class="circle"></div>
+                <img src="<%= product.image %>"  class="product">
+                <div class="before">NIKE</div>
+                <div class="after">SHOES</div>
+            </div>-->
+    
+            <div class="card">
+                <div class="imgBx">
+                    <img src="<%= product.image %>">
+                </div>
+                <div class="contentBx">
+                    <h3><a href="/product/<%= product._id %>"> <%= product.name %> </a></h3>
+                    <h2 class="price">Price: <%= product.price %>$</h2>
+                    <form action="/cart" method="POST" class="form-amount">
+                        <label for="">amount : </label>
+                        <input type="number" name="amount" value="1" class="frm">
+                        <button type="submit" class="btn-pr">Add to cart</button>
+                    </form>
+                </div>
             </div>
-            <div class="contentBx">
-                <h3><a href="/product/<%= product._id %>"> <%= product.name %> </a></h3>
-                <h2 class="price">Price: <%= product.price %>$</h2>
-                <form action="/cart" method="POST" class="form-amount">
-                    <label for="">amount : </label>
-                    <input type="number" name="amount" value="1" class="frm">
-                    <button type="submit" class="btn-pr">Add to cart</button>
-                </form>
-            </div>
-        </div>
-    <% } %>
+        <% } %>
+    <% } %> 
+    
 </div>
 
 <%- include('parts/footer.ejs') %> 

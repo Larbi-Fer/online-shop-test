@@ -4,18 +4,22 @@
 <div class="cart-group-2">
 
     <div class="cart-gr">
-        <div class="card">
-            <div class="imgBx">
-                <img src="/<%= product.image %> ">
+        <% if (!product) { %>
+            <h1 style="color: #fff">there is no product matches this id</h1>
+        <% } else { %>
+            <div class="card">
+                <div class="imgBx">
+                    <img src="/<%= product.image %> ">
+                </div>
+                <div class="contentBx">
+                    <form action="/cart" method="POST" class="form-amount">
+                        <label for="inp-frm">Amount :</label>
+                        <input type="number" name="amount" class="frm" id="inp-frm">
+                        <button type="submit" class="btn-pr">Add to cart</button>
+                    </form>
+                </div>
             </div>
-            <div class="contentBx">
-                <form action="/cart" method="POST" class="form-amount">
-                    <label for="inp-frm">Amount :</label>
-                    <input type="number" name="amount" class="frm" id="inp-frm">
-                    <button type="submit" class="btn-pr">Add to cart</button>
-                </form>
-            </div>
-        </div>
+        <% } %> 
     </div>
 
     <div class="cart-gr">
