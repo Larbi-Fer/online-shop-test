@@ -4,6 +4,7 @@ const path = require('path')
 const homeRouter = require('./routes/home.route')
 
 const productRouter = require('./routes/product.router')
+const authRouter = require('./routes/auth.router')
 
 const app = express()
 const port = 3000
@@ -19,6 +20,7 @@ app.set( 'views', 'views' )
 })*/
 
 app.use( '/', homeRouter )
+app.use('/', authRouter)
 app.use( '/product', productRouter )
 
 app.listen(port, (err) => {

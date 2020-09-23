@@ -1,0 +1,31 @@
+<%- include('parts/header.ejs') %>
+<%- include('parts/navbar.ejs') %>
+<link rel="stylesheet" href="css/auth.css">
+
+<div class="login">
+            <h2>Create Account</h2>
+            <form action="/singup" method="POST">
+
+                <div class="input-field">
+                    <input type="text" id="" name="username" required>
+                    <label>User Name</label>
+                    <span></span>
+                </div>
+
+                <div class="input-field">
+                    <input type="password" id="" required>
+                    <label>password</label>
+                    <span></span>
+                </div>
+
+                <button type="submit">Create Account</button>
+
+            </form>
+
+            <div style="color: #fff; margin-top: 15px">
+                Don't have account ? <a href="/singup">Singup</a>
+            </div>
+
+        </div>
+
+<%- include('parts/footer.ejs') %>
