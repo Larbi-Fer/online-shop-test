@@ -11,4 +11,7 @@ router.post("/singup", bodyParser.urlencoded({
   extended: true
 }), authController.postSingup);
 router.get("/login", authController.getLogin);
+router.post("/login", bodyParser.urlencoded({
+  extended: true
+}), authController.postLogin);
 module.exports = router;

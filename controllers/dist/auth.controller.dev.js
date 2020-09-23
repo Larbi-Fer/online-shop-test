@@ -17,3 +17,13 @@ exports.postSingup = function (req, res, next) {
 exports.getLogin = function (req, res, next) {
   res.render('login');
 };
+
+exports.postLogin = function (req, res, next) {
+  authModel.login(req.body.email, req.body.password).then(function (id) {
+    req.session.userId = id;
+    res.redirect('/');
+  })["catch"](function (err) {
+    console.log(err);
+    res.redirect('/login');
+  });
+};
