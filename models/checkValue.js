@@ -96,8 +96,15 @@ module.exports.checkVal = (val) => {
     return errors
 }
 
-
-//Test
+exports.ArrayToString = (array, c) => {
+        var str = ""
+        for (let x = 0; x < array.length; x++) {
+            const element = array[x];
+            str += element + c
+        }
+        return str
+    }
+    //Test
 
 
 /*checkVal({

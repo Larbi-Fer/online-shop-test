@@ -5,14 +5,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var authModel = require('../models/auth.model');
 
 var error = "";
+var errors = "";
 
 var checkInp = require('../models/checkValue');
 
 exports.getSingup = function (req, res, next) {
   res.render('singup', {
-    authError: error
+    authError: error,
+    validationErrors: errors
   });
   error = "";
+  errors = "";
 };
 
 exports.postSingup = function (req, res, next) {
@@ -40,15 +43,19 @@ exports.postSingup = function (req, res, next) {
       msg: "confirm password is incorrect"
     }
   }]), _checkInp$checkVal));
-  console.log(resl);
-  return resl;
 
-  if (resl.length != 0) {
+  if (resl.length === 0) {
     authModel.createNewUser(req.body.username, req.body.email, req.body.password).then(function () {
       return res.redirect('/login');
     })["catch"](function (err) {
       return res.redirect('/singup');
     });
+  } else {
+    //req.flash('validationError', checkInp.ArrayToString(resl, "\n"))
+    errors = checkInp.ArrayToString(resl, "\n"); //errors = resl
+
+    resl.find(err);
+    res.redirect('/singup');
   }
 };
 

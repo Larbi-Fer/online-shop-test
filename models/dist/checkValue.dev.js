@@ -78,6 +78,17 @@ module.exports.checkVal = function (val) {
   if (_typeof(val.v) != undefined) check(val.v[1], val.v[0]);
   check();
   return errors;
+};
+
+exports.ArrayToString = function (array, c) {
+  var str = "";
+
+  for (var _x = 0; _x < array.length; _x++) {
+    var element = array[_x];
+    str += element + c;
+  }
+
+  return str;
 }; //Test
 
 /*checkVal({

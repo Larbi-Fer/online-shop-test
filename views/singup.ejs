@@ -9,6 +9,11 @@
                     <%= authError %> 
                 </div>
             <% } %>
+            <% if (validationErrors) { %>
+                <div class="alert alert-err">
+                    <%= validationErrors %> 
+                </div>
+            <% } %>
             <form action="/singup" method="POST">
 
                 <div class="input-field">

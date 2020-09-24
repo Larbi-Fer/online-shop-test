@@ -1,7 +1,7 @@
 <%- include('parts/header.ejs') %> 
 <%- include('parts/navbar.ejs') %> 
 <form action="/" method="GET" style="text-align: center;">
-    <select name="category" class="frm" style="width: 85%;">
+    <select name="category" class="frm filter" style="width: 85%;">
         <option value="all">All</option>
         <option value="clothes">Clothes</option>
         <option value="phones">Phones</option>
@@ -24,7 +24,7 @@
                 <div class="after">SHOES</div>
             </div>-->
     
-            <div class="card">
+            <div class="card itemBox <%= product.category %>">
                 <div class="imgBx">
                     <img src="<%= product.image %>">
                 </div>
@@ -33,7 +33,7 @@
                     <h2 class="price">Price: <%= product.price %>$</h2>
                     <form action="/cart" method="POST" class="form-amount">
                         <label for="">amount : </label>
-                        <input type="number" name="amount" value="1" class="frm">
+                        <input type="number" name="amount" value="1" class="frm" min="1">
                         <button type="submit" class="btn-pr">Add to cart</button>
                     </form>
                 </div>
@@ -44,3 +44,20 @@
 </div>
 
 <%- include('parts/footer.ejs') %> 
+<script src="js/jQ.js"></script>
+<script>
+    $(document).ready(function() {
+    $('.filter').change(function() {
+
+        //document.write()
+        const valua = $(this).val()
+
+        if (valua == 'all') {
+            $('.itemBox').show('1000')
+        } else {
+            $('.itemBox').not("." + valua).hide('1000')
+            $('.itemBox').filter("." + valua).show('1000')
+        }
+        })
+    })
+</script>

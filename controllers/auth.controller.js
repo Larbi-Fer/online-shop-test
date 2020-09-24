@@ -1,11 +1,14 @@
 const authModel = require('../models/auth.model')
 var error = ""
+var errors = ""
 const checkInp = require('../models/checkValue')
 exports.getSingup = (req, res, next) => {
     res.render('singup', {
-        authError: error
+        authError: error,
+        validationErrors: errors
     });
     error = ""
+    errors = ""
 };
 
 exports.postSingup = (req, res, next) => {
@@ -36,11 +39,16 @@ exports.postSingup = (req, res, next) => {
             }
         ]
     })
-    console.log(resl)
-    return resl
-    if (resl.length != 0) {
+
+    if (resl.length === 0) {
         authModel.createNewUser(req.body.username, req.body.email, req.body.password)
             .then(() => res.redirect('/login')).catch(err => res.redirect('/singup'))
+    } else {
+        //req.flash('validationError', checkInp.ArrayToString(resl, "\n"))
+        errors = checkInp.ArrayToString(resl, "\n")
+            //errors = resl
+        resl.find(err)
+        res.redirect('/singup')
     }
 }
 

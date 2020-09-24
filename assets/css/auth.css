@@ -7,9 +7,9 @@ body {
 
 .login {
     position: absolute;
-    top: 55%;
+    top: 100px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     width: 400px;
     padding: 40px;
     background-color: rgba(0, 0, 0, .8);
