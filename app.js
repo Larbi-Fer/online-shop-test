@@ -1,9 +1,9 @@
 const express = require('express')
 const path = require('path')
 
-const session = require ('express-session')
+const session = require('express-session')
 const SessionStore = require('connect-mongodb-session')(session)
-const flash = require('connect-flash')    // install
+    //const flash = require('connect-flash')    // install
 
 const homeRouter = require('./routes/home.route')
 
@@ -13,9 +13,9 @@ const authRouter = require('./routes/auth.router')
 const app = express()
 const port = 3000
 
-app.use( express.static( path.join( __dirname, 'assets' ) ) )
-app.use( express.static( path.join( __dirname, 'images' ) ) )
-app.use(flash())
+app.use(express.static(path.join(__dirname, 'assets')))
+app.use(express.static(path.join(__dirname, 'images')))
+    //app.use(flash())
 
 const STORE = new SessionStore({
     uri: 'mongodb://localhost:27017/online-shop',
@@ -28,15 +28,15 @@ app.use(session({
     store: STORE
 }))
 
-app.set( 'view engine', 'ejs' )
-app.set( 'views', 'views' )
+app.set('view engine', 'ejs')
+app.set('views', 'views')
 
 
-app.use( '/', homeRouter )
+app.use('/', homeRouter)
 app.use('/', authRouter)
-app.use( '/product', productRouter )
+app.use('/product', productRouter)
 
 app.listen(port, (err) => {
-    console.log("error : ",err)
+    console.log("error : ", err)
     console.log(`Example app listening on port port!`)
 })

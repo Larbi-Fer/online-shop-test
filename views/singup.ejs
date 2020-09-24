@@ -4,6 +4,11 @@
 
         <div class="login">
             <h2>Create Account</h2>
+            <% if (authError) { %>
+                <div class="alert alert-err">
+                    <%= authError %> 
+                </div>
+            <% } %>
             <form action="/singup" method="POST">
 
                 <div class="input-field">

@@ -1,9 +1,10 @@
 const authModel = require('../models/auth.model')
-
+var error = ""
 exports.getSingup = (req, res, next) => {
     res.render('singup', {
-        authError: req.flash('authEroor')[0]
+        authError: error
     });
+    error = ""
 };
 
 exports.postSingup = (req, res, next) => {
@@ -12,7 +13,10 @@ exports.postSingup = (req, res, next) => {
 }
 
 exports.getLogin = (req, res, next) => {
-    res.render('login')
+    res.render('login', {
+        authError: error
+    })
+    error = ""
 }
 
 exports.postLogin = (req, res, next) => {
@@ -22,7 +26,8 @@ exports.postLogin = (req, res, next) => {
             res.redirect('/')
         })
         .catch(err => {
-            req.flash('authEroor', err)
+            //req.flash('authEroor', err)
+            error = err
             res.redirect('/login')
         })
 }

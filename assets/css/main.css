@@ -61,3 +61,18 @@ body {
         display: block;
     }
 }
+
+.alert {
+    width: 90%;
+    font-size: 20px;
+    background: rgb(0, 217, 255);
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 5px;
+}
+
+.alert-err {
+    background: rgb(255, 70, 54);
+    color: #fff;
+    border: 2px solid #8b0000;
+}

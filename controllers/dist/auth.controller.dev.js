@@ -2,10 +2,13 @@
 
 var authModel = require('../models/auth.model');
 
+var error = "";
+
 exports.getSingup = function (req, res, next) {
   res.render('singup', {
-    authError: req.flash('authEroor')[0]
+    authError: error
   });
+  error = "";
 };
 
 exports.postSingup = function (req, res, next) {
@@ -17,7 +20,10 @@ exports.postSingup = function (req, res, next) {
 };
 
 exports.getLogin = function (req, res, next) {
-  res.render('login');
+  res.render('login', {
+    authError: error
+  });
+  error = "";
 };
 
 exports.postLogin = function (req, res, next) {
@@ -25,7 +31,8 @@ exports.postLogin = function (req, res, next) {
     req.session.userId = id;
     res.redirect('/');
   })["catch"](function (err) {
-    req.flash('authEroor', err);
+    //req.flash('authEroor', err)
+    error = err;
     res.redirect('/login');
   });
 };
