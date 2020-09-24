@@ -24,3 +24,10 @@ exports.postLogin = (req, res, next) => {
             res.redirect('/login')
         })
 }
+
+
+exports.logout = (res, req, next) => {
+    req.session.destroy(() => {
+        res.redirect('/')
+    })
+}

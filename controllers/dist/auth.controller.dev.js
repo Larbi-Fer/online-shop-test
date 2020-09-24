@@ -27,3 +27,9 @@ exports.postLogin = function (req, res, next) {
     res.redirect('/login');
   });
 };
+
+exports.logout = function (res, req, next) {
+  req.session.destroy(function () {
+    res.redirect('/');
+  });
+};
