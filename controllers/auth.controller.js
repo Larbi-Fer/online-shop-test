@@ -1,7 +1,9 @@
 const authModel = require('../models/auth.model')
 
 exports.getSingup = (req, res, next) => {
-    res.render('singup');
+    res.render('singup', {
+        authError: req.flash('authEroor')[0]
+    });
 };
 
 exports.postSingup = (req, res, next) => {
@@ -20,7 +22,7 @@ exports.postLogin = (req, res, next) => {
             res.redirect('/')
         })
         .catch(err => {
-            console.log(err)
+            req.flash('authEroor', err)
             res.redirect('/login')
         })
 }

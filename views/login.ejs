@@ -3,7 +3,12 @@
 <link rel="stylesheet" href="css/auth.css">
 
 <div class="login">
-            <h2>Create Account</h2>
+            <h2>Login</h2>
+            <% if (authError) { %>
+                <h3>
+                    <%= authError %> 
+                </h3>
+            <% } %>
             <form action="/login" method="POST">
 
                 <div class="input-field">
@@ -18,12 +23,12 @@
                     <span></span>
                 </div>
 
-                <button type="submit">Create Account</button>
+                <button type="submit">Login</button>
 
             </form>
 
             <div style="color: #fff; margin-top: 15px">
-                Don't have account ? <a href="/singup">Singup</a>
+                Don't have account ? <a href="/singup">Create Account</a>
             </div>
 
         </div>

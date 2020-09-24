@@ -3,7 +3,9 @@
 var authModel = require('../models/auth.model');
 
 exports.getSingup = function (req, res, next) {
-  res.render('singup');
+  res.render('singup', {
+    authError: req.flash('authEroor')[0]
+  });
 };
 
 exports.postSingup = function (req, res, next) {
@@ -23,7 +25,7 @@ exports.postLogin = function (req, res, next) {
     req.session.userId = id;
     res.redirect('/');
   })["catch"](function (err) {
-    console.log(err);
+    req.flash('authEroor', err);
     res.redirect('/login');
   });
 };
