@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var bcrypt = require('bcrypt');
 
-var DB_URL = "mongodb://localhost/online-shop";
+var DB_URL = "mongodb://localhost:27017/online-shop";
 var userSchema = mongoose.Schema({
   username: String,
   email: String,

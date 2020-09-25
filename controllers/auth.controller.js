@@ -6,11 +6,13 @@ exports.getSingup = (req, res, next) => {
     //console.log(req.flash('validationError'))
     res.render('singup', {
         authError: req.flash("authError"),
-        validationErrors: req.flash("validationError")
+        validationErrors: req.flash("validationError"),
+        isUser: false
     });
     error = ""
     errors = ""
 };
+
 
 exports.postSingup = (req, res, next) => {
     var resl = checkInp.checkVal({
@@ -61,12 +63,17 @@ exports.postSingup = (req, res, next) => {
     }
 }
 
+
+
 exports.getLogin = (req, res, next) => {
     res.render('login', {
-        authError: req.flash("authError")
+        authError: req.flash("authError"),
+        isUser: false
     })
     error = ""
 }
+
+
 
 exports.postLogin = (req, res, next) => {
     authModel.login(req.body.email, req.body.password)

@@ -13,7 +13,8 @@ exports.getSingup = function (req, res, next) {
   //console.log(req.flash('validationError'))
   res.render('singup', {
     authError: req.flash("authError"),
-    validationErrors: req.flash("validationError")
+    validationErrors: req.flash("validationError"),
+    isUser: false
   });
   error = "";
   errors = "";
@@ -67,7 +68,8 @@ exports.postSingup = function (req, res, next) {
 
 exports.getLogin = function (req, res, next) {
   res.render('login', {
-    authError: req.flash("authError")
+    authError: req.flash("authError"),
+    isUser: false
   });
   error = "";
 };
