@@ -3,9 +3,10 @@ var error = ""
 var errors = ""
 const checkInp = require('../models/checkValue')
 exports.getSingup = (req, res, next) => {
+    //console.log(req.flash('validationError'))
     res.render('singup', {
-        authError: error,
-        validationErrors: errors
+        authError: req.flash("authError"),
+        validationErrors: req.flash("validationError")
     });
     error = ""
     errors = ""
@@ -16,6 +17,11 @@ exports.postSingup = (req, res, next) => {
         notEmpty: {
             value: req.body.username,
             msg: "username is empty !"
+        },
+        min: {
+            min: 3,
+            value: req.body.username,
+            msg: "usirname min is 3"
         },
         notEmpty: {
             value: req.body.email,
@@ -42,19 +48,22 @@ exports.postSingup = (req, res, next) => {
 
     if (resl.length === 0) {
         authModel.createNewUser(req.body.username, req.body.email, req.body.password)
-            .then(() => res.redirect('/login')).catch(err => res.redirect('/singup'))
+            .then(() => res.redirect('/login'))
+            .catch(err => {
+                req.flash("authError", err)
+                res.redirect('/singup')
+            })
     } else {
-        //req.flash('validationError', checkInp.ArrayToString(resl, "\n"))
-        errors = checkInp.ArrayToString(resl, "\n")
+        req.flash('validationError', checkInp.ArrayToString(resl, "\n"))
+            //errors = checkInp.ArrayToString(resl, "\n")
             //errors = resl
-        resl.find(err)
         res.redirect('/singup')
     }
 }
 
 exports.getLogin = (req, res, next) => {
     res.render('login', {
-        authError: error
+        authError: req.flash("authError")
     })
     error = ""
 }
@@ -66,8 +75,7 @@ exports.postLogin = (req, res, next) => {
             res.redirect('/')
         })
         .catch(err => {
-            //req.flash('authEroor', err)
-            error = err
+            req.flash('authError', err)
             res.redirect('/login')
         })
 }

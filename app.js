@@ -3,7 +3,7 @@ const path = require('path')
 
 const session = require('express-session')
 const SessionStore = require('connect-mongodb-session')(session)
-    //const flash = require('connect-flash')    // install
+const flash = require('connect-flash') // install
 
 const homeRouter = require('./routes/home.route')
 
@@ -15,7 +15,7 @@ const port = 3000
 
 app.use(express.static(path.join(__dirname, 'assets')))
 app.use(express.static(path.join(__dirname, 'images')))
-    //app.use(flash())
+app.use(flash())
 
 const STORE = new SessionStore({
     uri: 'mongodb://localhost:27017/online-shop',

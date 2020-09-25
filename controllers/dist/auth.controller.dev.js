@@ -10,9 +10,10 @@ var errors = "";
 var checkInp = require('../models/checkValue');
 
 exports.getSingup = function (req, res, next) {
+  //console.log(req.flash('validationError'))
   res.render('singup', {
-    authError: error,
-    validationErrors: errors
+    authError: req.flash("authError"),
+    validationErrors: req.flash("validationError")
   });
   error = "";
   errors = "";
@@ -25,6 +26,11 @@ exports.postSingup = function (req, res, next) {
     notEmpty: {
       value: req.body.username,
       msg: "username is empty !"
+    },
+    min: {
+      min: 3,
+      value: req.body.username,
+      msg: "usirname min is 3"
     }
   }, _defineProperty(_checkInp$checkVal, "notEmpty", {
     value: req.body.email,
@@ -48,20 +54,20 @@ exports.postSingup = function (req, res, next) {
     authModel.createNewUser(req.body.username, req.body.email, req.body.password).then(function () {
       return res.redirect('/login');
     })["catch"](function (err) {
-      return res.redirect('/singup');
+      req.flash("authError", err);
+      res.redirect('/singup');
     });
   } else {
-    //req.flash('validationError', checkInp.ArrayToString(resl, "\n"))
-    errors = checkInp.ArrayToString(resl, "\n"); //errors = resl
+    req.flash('validationError', checkInp.ArrayToString(resl, "\n")); //errors = checkInp.ArrayToString(resl, "\n")
+    //errors = resl
 
-    resl.find(err);
     res.redirect('/singup');
   }
 };
 
 exports.getLogin = function (req, res, next) {
   res.render('login', {
-    authError: error
+    authError: req.flash("authError")
   });
   error = "";
 };
@@ -71,8 +77,7 @@ exports.postLogin = function (req, res, next) {
     req.session.userId = id;
     res.redirect('/');
   })["catch"](function (err) {
-    //req.flash('authEroor', err)
-    error = err;
+    req.flash('authError', err);
     res.redirect('/login');
   });
 };

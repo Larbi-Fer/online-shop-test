@@ -2,10 +2,10 @@
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var errors = [];
-var x = 0;
-
 module.exports.checkVal = function (val) {
+  var errors = [];
+  var x = 0;
+
   function check() {
     var c = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : val;
     var str = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
@@ -83,13 +83,17 @@ module.exports.checkVal = function (val) {
 exports.ArrayToString = function (array, c) {
   var str = "";
 
-  for (var _x = 0; _x < array.length; _x++) {
-    var element = array[_x];
+  for (var x = 0; x < array.length; x++) {
+    var element = array[x];
     str += element + c;
   }
 
   return str;
-}; //Test
+};
+/*declare namespace this.checkVal{
+
+}*/
+//Test
 
 /*checkVal({
     v1: "1"

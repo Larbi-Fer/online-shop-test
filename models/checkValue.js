@@ -1,7 +1,7 @@
-var errors = []
-var x = 0
-
 module.exports.checkVal = (val) => {
+
+    var errors = []
+    var x = 0
 
     function check(c = val, str = "") {
         if (c.notEmpty) {
@@ -97,14 +97,18 @@ module.exports.checkVal = (val) => {
 }
 
 exports.ArrayToString = (array, c) => {
-        var str = ""
-        for (let x = 0; x < array.length; x++) {
-            const element = array[x];
-            str += element + c
-        }
-        return str
+    var str = ""
+    for (let x = 0; x < array.length; x++) {
+        const element = array[x];
+        str += element + c
     }
-    //Test
+    return str
+}
+
+/*declare namespace this.checkVal{
+
+}*/
+//Test
 
 
 /*checkVal({
