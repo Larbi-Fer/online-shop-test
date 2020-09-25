@@ -17,6 +17,8 @@ var productRouter = require('./routes/product.router');
 
 var authRouter = require('./routes/auth.router');
 
+var cartRouter = require('./routes/cart.router');
+
 var app = express();
 var port = 3000;
 app.use(express["static"](path.join(__dirname, 'assets')));
@@ -36,6 +38,7 @@ app.set('views', 'views');
 app.use('/', homeRouter);
 app.use('/', authRouter);
 app.use('/product', productRouter);
+app.use('/cart', cartRouter);
 app.listen(port, function (err) {
   console.log("error : ", err);
   console.log("Example app listening on port port!");

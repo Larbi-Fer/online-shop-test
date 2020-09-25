@@ -8,7 +8,8 @@ exports.getProduct = function (req, res, next) {
   // render
   productsModel.getFirstProduct().then(function (product) {
     res.render('product', {
-      product: product
+      product: product,
+      isUser: req.session.userId
     });
   });
 };
@@ -20,7 +21,8 @@ exports.getProductById = function (req, res, next) {
   var id = req.params.id;
   productsModel.getProductById(id).then(function (product) {
     res.render('product', {
-      product: product
+      product: product,
+      isUser: req.session.userId
     });
   });
 };

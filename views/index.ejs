@@ -9,6 +9,13 @@
     </select>
     <button type="submit" class="btn-pr">Fillter</button>
 </form>
+
+<% if (validationError) { %>
+    <div class="alert alert-err">
+        <%= validationError %> 
+    </div>
+<% } %>
+
 <div class="container">
     
     <% if (products.length === 0) { %>
@@ -34,6 +41,10 @@
                     <form action="/cart" method="POST" class="form-amount">
                         <label for="">amount : </label>
                         <input type="number" name="amount" value="1" class="frm" min="1">
+                        <input type="hidden" name="name" value="<%= product.name %> ">
+                        <input type="hidden" name="price" value="<%= product.price %>">
+                        <input type="hidden" name="productId" value="<%= product.productId %>">
+                        <input type="hidden" name="redirectTo" value="/">
                         <button type="submit" class="btn-pr">Add to cart</button>
                     </form>
                 </div>

@@ -15,6 +15,10 @@
                     <form action="/cart" method="POST" class="form-amount">
                         <label for="inp-frm">Amount :</label>
                         <input type="number" name="amount" class="frm" id="inp-frm" value="1" min="1">
+                        <input type="hidden" name="name" value="<%= product.name %> ">
+                        <input type="hidden" name="price" value="<%= product.price %>">
+                        <input type="hidden" name="productId" value="<%= product.productId %>">
+                        <input type="hidden" name="redirectTo" value="/">
                         <button type="submit" class="btn-pr">Add to cart</button>
                     </form>
                 </div>

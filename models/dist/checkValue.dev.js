@@ -19,6 +19,17 @@ module.exports.checkVal = function (val) {
           x++;
         }
       }
+    }
+
+    if (c.isEmpty) {
+      //not empty     غير فارغة
+      if (_typeof(c.notEmpty.value) != undefined) {
+        // not empty
+        if (c.notEmpty.value !== "") {
+          if (_typeof(c.notEmpty.msg) != undefined) errors[x] = c.notEmpty.msg;else errors[x] = "value is not Empty";
+          x++;
+        }
+      }
     } // custum   التحقق من قيمتين
 
 

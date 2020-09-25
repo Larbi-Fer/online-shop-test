@@ -15,7 +15,8 @@ exports.getHome = function (req, res, next) {
   promctsPromise.then(function (products) {
     res.render('index', {
       products: products,
-      isUser: req.session.userId
+      isUser: req.session.userId,
+      validationError: req.flash('validationError')[0]
     });
   });
 };
