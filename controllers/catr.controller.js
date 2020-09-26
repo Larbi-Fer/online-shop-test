@@ -65,7 +65,6 @@ exports.postSave = (req, res, next) => {
         }).then(() => res.redirect("/cart")).catch(err => console.log(err))
     } else {
         req.flash("valisationErrors", validationResult.ArrayToString(r))
-        console.log("Test")
         res.redirect('/cart')
     }
 }

@@ -61,16 +61,16 @@ exports.editItem = (id, newData) => {
     })
 }
 
-exports.deleteItem = (id, newData) => {
+exports.deleteItem = (id) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL).then(() => {
             return CartItem.findByIdAndDelete(id)
+        }).then(items => {
+            mongoose.disconnect()
+            resolve(items)
+        }).catch(err => {
+            mongoose.disconnect()
+            reject(err)
         })
-    }).then(items => {
-        mongoose.disconnect()
-        resolve(items)
-    }).catch(err => {
-        mongoose.disconnect()
-        reject(err)
     })
 }

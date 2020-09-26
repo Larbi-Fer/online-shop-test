@@ -64,16 +64,16 @@ exports.editItem = function (id, newData) {
   });
 };
 
-exports.deleteItem = function (id, newData) {
+exports.deleteItem = function (id) {
   return new Promise(function (resolve, reject) {
     mongoose.connect(DB_URL).then(function () {
       return CartItem.findByIdAndDelete(id);
+    }).then(function (items) {
+      mongoose.disconnect();
+      resolve(items);
+    })["catch"](function (err) {
+      mongoose.disconnect();
+      reject(err);
     });
-  }).then(function (items) {
-    mongoose.disconnect();
-    resolve(items);
-  })["catch"](function (err) {
-    mongoose.disconnect();
-    reject(err);
   });
 };

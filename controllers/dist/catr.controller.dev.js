@@ -72,7 +72,6 @@ exports.postSave = function (req, res, next) {
     });
   } else {
     req.flash("valisationErrors", validationResult.ArrayToString(r));
-    console.log("Test");
     res.redirect('/cart');
   }
 };
