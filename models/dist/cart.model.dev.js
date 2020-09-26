@@ -27,3 +27,53 @@ exports.addNewItem = function (data) {
     });
   });
 };
+
+exports.getItemsByUser = function (userId) {
+  return new Promise(function (resolve, reject) {
+    mongoose.connect(DB_URL).then(function () {
+      return CartItem.find({
+        userId: userId
+      }, {}, {
+        sort: {
+          timestamp: -1
+        }
+      });
+    }).then(function (items) {
+      mongoose.disconnect();
+      resolve(items);
+    })["catch"](function (err) {
+      mongoose.disconnect();
+      reject(err);
+    });
+  });
+};
+
+exports.editItem = function (id, newData) {
+  return new Promise(function (resolve, reject) {
+    mongoose.connect(DB_URL).then(function () {
+      return CartItem.updateOne({
+        _id: id
+      }, newData);
+    }).then(function (items) {
+      mongoose.disconnect();
+      resolve(items);
+    })["catch"](function (err) {
+      mongoose.disconnect();
+      reject(err);
+    });
+  });
+};
+
+exports.deleteItem = function (id, newData) {
+  return new Promise(function (resolve, reject) {
+    mongoose.connect(DB_URL).then(function () {
+      return CartItem.findByIdAndDelete(id);
+    });
+  }).then(function (items) {
+    mongoose.disconnect();
+    resolve(items);
+  })["catch"](function (err) {
+    mongoose.disconnect();
+    reject(err);
+  });
+};

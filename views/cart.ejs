@@ -1,0 +1,102 @@
+<%- include('parts/header.ejs') %>
+<%- include('parts/navbar.ejs') %>
+
+<style>
+    td {
+        padding: 1px 20px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        text-align: left;
+        max-width: 16%;
+        min-width: 90px;
+    }
+    
+    td:last-child {
+        width: 100%;
+        text-align: right;
+        padding-right: 30%;
+    }
+    
+    td:first-child {
+        max-width: 10px !important;
+    }
+    
+    thead * {
+        color: #ff1500;
+    }
+    
+    tbody {
+        background: #424242;
+        border-radius: 20px;
+    }
+    
+    tbody tr:first-child td:first-child {
+        border-top-left-radius: 15px;
+        /*border-bottom-left-radius: 15px;*/
+    }
+    
+    tbody tr:first-child td:last-child {
+        border-top-right-radius: 15px;
+        /*border-bottom-right-radius: 15px;*/
+    }
+
+    tbody tr:last-child td:first-child {
+        /* border-top-left-radius: 15px; */
+        border-bottom-left-radius: 15px;
+    }
+    
+    tbody tr:last-child td:last-child {
+        /* border-top-right-radius: 15px; */
+        border-bottom-right-radius: 15px;
+    }
+    
+    td:last-child button[type=submit] {
+        margin-left: 20px;
+    }
+</style>
+
+<div class="containe">
+    <% if (items.length === 0) { %>
+        <div class="alert alert-err">There is no items</div>
+    <% } else { %>
+        <% if (valisationErrors.length !== 0) { %>
+            <div class="alert alert-err"><% valisationErrors %> </div>
+        <% } %>
+        <table>
+
+            <thead>
+                <td>no</td>
+                <td>Product name</td>
+                <td>Price</td>
+                <td>Amount</td>
+                <td>Total</td>
+                <td></td>
+            </thead>
+
+            <tbody>
+                <% for( let i = 0; i < items.length; i++ ) { %>
+                    <tr>
+                        <td> <%= i + 1 %>  </td>
+                        <td> <%= items[i].name %>  </td>
+                        <td> <%= items[i].price %> $ </td>
+                        <form method="POST">
+                            <td> <input type="Number" name="amount" class="frm" value="<%= items[i].amount %>" min="1"> </td>
+                            <td> <%= Number( items[i].price) * Number(items[i].amount) %> $ </td>
+                            <td>
+                                <input type="hidden" name="cartId" value="<%= items[i]._id %>">
+                                <button type="submit" class="btn-pr" formaction="/cart/save">Save</button>
+                                <button type="submit" class="btn-pr" style="background: #f54;" formaction="/cart/delete">Delet</button>
+                            </td>
+                        </form>
+                    </tr>
+                <% } %>
+            </tbody>
+
+        </table>
+
+    <% } %> 
+
+</div>
+
+<%- include('parts/footer.ejs') %>

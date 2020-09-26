@@ -30,3 +30,47 @@ exports.addNewItem = data => {
     })
 
 }
+
+
+exports.getItemsByUser = userId => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => {
+            return CartItem.find({ userId: userId }, {}, { sort: { timestamp: -1 } })
+        }).then(items => {
+            mongoose.disconnect()
+            resolve(items)
+        }).catch(err => {
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+
+
+exports.editItem = (id, newData) => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => {
+            return CartItem.updateOne({ _id: id }, newData)
+        }).then(items => {
+            mongoose.disconnect()
+            resolve(items)
+        }).catch(err => {
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+
+exports.deleteItem = (id, newData) => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => {
+            return CartItem.findByIdAndDelete(id)
+        })
+    }).then(items => {
+        mongoose.disconnect()
+        resolve(items)
+    }).catch(err => {
+        mongoose.disconnect()
+        reject(err)
+    })
+}
