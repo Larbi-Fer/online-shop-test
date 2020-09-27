@@ -8,7 +8,8 @@ exports.getProduct = (req, res, next) => {
     productsModel.getFirstProduct().then(product => {
         res.render('product', {
             product: product,
-            isUser: req.session.userId
+            isUser: req.session.userId,
+            isAdmin: req.session.isAdmin
         })
     })
 }
@@ -22,7 +23,8 @@ exports.getProductById = (req, res, next) => {
     productsModel.getProductById(id).then((product) => {
         res.render('product', {
             product: product,
-            isUser: req.session.userId
+            isUser: req.session.userId,
+            isAdmin: req.session.isAdmin
         })
     })
 }

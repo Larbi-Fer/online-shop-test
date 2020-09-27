@@ -7,7 +7,8 @@ exports.getSingup = (req, res, next) => {
     res.render('singup', {
         authError: req.flash("authError"),
         validationErrors: req.flash("validationError"),
-        isUser: false
+        isUser: false,
+        isAdmin: false
     });
     error = ""
     errors = ""
@@ -68,7 +69,8 @@ exports.postSingup = (req, res, next) => {
 exports.getLogin = (req, res, next) => {
     res.render('login', {
         authError: req.flash("authError"),
-        isUser: false
+        isUser: false,
+        isAdmin: false
     })
     error = ""
 }
@@ -77,8 +79,9 @@ exports.getLogin = (req, res, next) => {
 
 exports.postLogin = (req, res, next) => {
     authModel.login(req.body.email, req.body.password)
-        .then((id) => {
-            req.session.userId = id
+        .then(result => {
+            req.session.userId = result.id
+            req.session.isAdmin = result.isAdmin
             res.redirect('/')
         })
         .catch(err => {

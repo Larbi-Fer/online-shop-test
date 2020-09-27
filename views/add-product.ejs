@@ -1,0 +1,55 @@
+<%- include('parts/header.ejs') %>
+<%- include('parts/navbar.ejs') %>
+<link rel="stylesheet" href="/css/auth.css">
+
+
+<div class="login">
+    <h2>Add Product</h2>
+    <% if (validationErrors != "") { %>
+        <div class="alert alert-err">
+            <%= validationErrors %> 
+        </div>
+    <% } %>
+    <form action="/admin/add" method="POST">
+
+        <div class="input-field">
+            <input type="text" name="name" required>
+            <label>Name</label>
+            <span></span>
+        </div>
+
+        <div class="input-field">
+            <input type="number" name="price" required min="1" value="1">
+            <label>Price</label>
+            <span></span>
+        </div>
+
+        <div class="input-field">
+            <textarea type="text" name="description" required></textarea>
+            <label>Description</label>
+        </div>
+
+        <div class="input-field">
+            <select type="text" name="category" required>
+                <option value="clothes">Clothes</option>
+                <option value="phones">Phones</option>
+                <option value="computers">Computers</option>
+            </select>
+            <label>Category</label>
+            <span></span>
+        </div>
+
+        <div class="input-field input-field-foc">
+            <input type="file" name="image" required>
+            <label>Image</label>
+            <span></span>
+        </div>
+
+        <button type="submit">Add</button>
+
+    </form>
+
+</div>
+
+
+<%- include('parts/footer.ejs') %>

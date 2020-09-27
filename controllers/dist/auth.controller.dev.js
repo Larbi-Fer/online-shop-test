@@ -14,7 +14,8 @@ exports.getSingup = function (req, res, next) {
   res.render('singup', {
     authError: req.flash("authError"),
     validationErrors: req.flash("validationError"),
-    isUser: false
+    isUser: false,
+    isAdmin: false
   });
   error = "";
   errors = "";
@@ -69,14 +70,16 @@ exports.postSingup = function (req, res, next) {
 exports.getLogin = function (req, res, next) {
   res.render('login', {
     authError: req.flash("authError"),
-    isUser: false
+    isUser: false,
+    isAdmin: false
   });
   error = "";
 };
 
 exports.postLogin = function (req, res, next) {
-  authModel.login(req.body.email, req.body.password).then(function (id) {
-    req.session.userId = id;
+  authModel.login(req.body.email, req.body.password).then(function (result) {
+    req.session.userId = result.id;
+    req.session.isAdmin = result.isAdmin;
     res.redirect('/');
   })["catch"](function (err) {
     req.flash('authError', err);

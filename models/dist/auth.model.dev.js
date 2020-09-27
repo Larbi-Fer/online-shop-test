@@ -8,7 +8,11 @@ var DB_URL = "mongodb://localhost:27017/online-shop";
 var userSchema = mongoose.Schema({
   username: String,
   email: String,
-  password: String
+  password: String,
+  isAdmin: {
+    type: Boolean,
+    "default": false
+  }
 });
 var User = mongoose.model('user', userSchema);
 
@@ -33,7 +37,8 @@ exports.createNewUser = function (username, email, password) {
       var user = new User({
         username: username,
         email: email,
-        password: hashedPassword
+        password: hashedPassword,
+        isAdmin: false
       });
       return user.save();
     }).then(function () {
@@ -74,7 +79,10 @@ exports.login = function (email, password) {
             //                       ↓ ↓  2.2.1
             // install express-session  &  connect-mongodb-session
             mongoose.disconnect();
-            resolve(user._id);
+            resolve({
+              id: user._id,
+              isAdmin: user.isAdmin
+            });
           }
         });
       }

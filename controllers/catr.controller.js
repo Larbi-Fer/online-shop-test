@@ -6,7 +6,8 @@ exports.getCart = (req, res, next) => {
         res.render('cart', {
             items: items,
             valisationErrors: req.flash("valisationErrors"),
-            isUser: true
+            isUser: true,
+            isAdmin: req.session.isAdmin
         })
     }).catch(err => {
         console.log(err);

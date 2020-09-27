@@ -19,6 +19,8 @@ var authRouter = require('./routes/auth.router');
 
 var cartRouter = require('./routes/cart.router');
 
+var adminRouter = require('./routes/admin.router');
+
 var app = express();
 var port = 3000;
 app.use(express["static"](path.join(__dirname, 'assets')));
@@ -39,6 +41,7 @@ app.use('/', homeRouter);
 app.use('/', authRouter);
 app.use('/product', productRouter);
 app.use('/cart', cartRouter);
+app.use('/admin', adminRouter);
 app.listen(port, function (err) {
   console.log("error : ", err);
   console.log("Example app listening on port port!");

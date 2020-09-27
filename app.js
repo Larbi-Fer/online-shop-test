@@ -10,6 +10,7 @@ const homeRouter = require('./routes/home.route')
 const productRouter = require('./routes/product.router')
 const authRouter = require('./routes/auth.router')
 const cartRouter = require('./routes/cart.router')
+const adminRouter = require('./routes/admin.router')
 
 const app = express()
 const port = 3000
@@ -37,6 +38,7 @@ app.use('/', homeRouter)
 app.use('/', authRouter)
 app.use('/product', productRouter)
 app.use('/cart', cartRouter)
+app.use('/admin', adminRouter)
 
 app.listen(port, (err) => {
     console.log("error : ", err)

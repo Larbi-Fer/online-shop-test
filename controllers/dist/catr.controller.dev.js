@@ -9,7 +9,8 @@ exports.getCart = function (req, res, next) {
     res.render('cart', {
       items: items,
       valisationErrors: req.flash("valisationErrors"),
-      isUser: true
+      isUser: true,
+      isAdmin: req.session.isAdmin
     });
   })["catch"](function (err) {
     console.log(err);

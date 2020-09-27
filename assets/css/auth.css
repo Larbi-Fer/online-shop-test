@@ -5,6 +5,16 @@ body {
     background-size: cover;
 }
 
+option {
+    background: #2b2b2b;
+    font-size: 18px;
+    color: #fff;
+}
+
+option:checked {
+    background: #141414;
+}
+
 .login {
     position: absolute;
     top: 100px;
@@ -31,6 +41,8 @@ body {
     overflow: hidden;
 }
 
+.login .input-field textarea,
+.login .input-field select,
 .login .input-field input {
     width: 100%;
     padding: 10px 0;
@@ -54,6 +66,10 @@ body {
     transition: .7s ease-in-out;
 }
 
+.login .input-field textarea:focus~span,
+.login .input-field textarea:valid~span,
+.login .input-field select:focus~span,
+.login .input-field select:valid~span,
 .login .input-field input:focus~span,
 .login .input-field input:valid~span {
     transform: translate(0%);
@@ -70,6 +86,11 @@ body {
     transition: .5s;
 }
 
+.login .input-field textarea:focus~label,
+.login .input-field textarea:valid~label,
+.login .input-field select:focus~label,
+.login .input-field select:valid~label,
+.login .input-field-foc label,
 .login .input-field input:focus~label,
 .login .input-field input:valid~label {
     top: -20px;

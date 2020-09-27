@@ -7,7 +7,11 @@ const DB_URL = "mongodb://localhost:27017/online-shop"
 const userSchema = mongoose.Schema({
     username: String,
     email: String,
-    password: String
+    password: String,
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 })
 
 const User = mongoose.model('user', userSchema)
@@ -33,7 +37,8 @@ exports.createNewUser = (username, email, password) => {
             let user = new User({
                 username: username,
                 email: email,
-                password: hashedPassword
+                password: hashedPassword,
+                isAdmin: false
             })
             return user.save()
         }).then(() => {
@@ -69,7 +74,10 @@ exports.login = (email, password) => {
                     } else { //                       ↓ ↓  2.2.1
                         // install express-session  &  connect-mongodb-session
                         mongoose.disconnect()
-                        resolve(user._id)
+                        resolve({
+                            id: user._id,
+                            isAdmin: user.isAdmin
+                        })
                     }
                 })
             }
