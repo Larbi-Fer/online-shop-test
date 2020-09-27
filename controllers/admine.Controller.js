@@ -9,5 +9,10 @@ exports.getAdd = (req, res, next) => {
 }
 
 exports.postAdd = (req, res, next) => {
-
+    productsModel.addProduct(req.body, req.file.filename).then(() => {
+        req.flash("added", true)
+        res.refirect('/admin/add')
+    }).catch(err => {
+        res.redirect('/error')
+    })
 }

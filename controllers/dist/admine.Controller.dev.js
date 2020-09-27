@@ -10,4 +10,11 @@ exports.getAdd = function (req, res, next) {
   });
 };
 
-exports.postAdd = function (req, res, next) {};
+exports.postAdd = function (req, res, next) {
+  productsModel.addProduct(req.body, req.file.filename).then(function () {
+    req.flash("added", true);
+    res.refirect('/admin/add');
+  })["catch"](function (err) {
+    res.redirect('/error');
+  });
+};

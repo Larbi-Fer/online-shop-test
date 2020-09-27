@@ -68,3 +68,22 @@ exports.getFirstProduct = function () {
     });
   });
 };
+
+exports.addProduct = function (object, imgName) {
+  return new Promise(function (resolve, reject) {
+    mongoose.connect(DB_URL).then(function () {
+      var product = new product({
+        name: object.name,
+        image: imgName,
+        price: object.price,
+        description: object.description,
+        category: object.category
+      });
+    }).then(function (prosucts) {
+      mongoose.disconnect();
+      resolve(prosucts);
+    })["catch"](function (err) {
+      return reject(err);
+    });
+  });
+};

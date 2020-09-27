@@ -40,6 +40,13 @@ app.use('/product', productRouter)
 app.use('/cart', cartRouter)
 app.use('/admin', adminRouter)
 
+app.get('/error', (req, res, next) => {
+    res.render('error.ejs', {
+        isUser: req.session.userId,
+        isAdmin: req.session.isAdmin
+    })
+})
+
 app.listen(port, (err) => {
     console.log("error : ", err)
     console.log(`Example app listening on port port!`)

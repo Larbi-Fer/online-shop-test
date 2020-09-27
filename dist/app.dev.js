@@ -42,6 +42,12 @@ app.use('/', authRouter);
 app.use('/product', productRouter);
 app.use('/cart', cartRouter);
 app.use('/admin', adminRouter);
+app.get('/error', function (req, res, next) {
+  res.render('error.ejs', {
+    isUser: req.session.userId,
+    isAdmin: req.session.isAdmin
+  });
+});
 app.listen(port, function (err) {
   console.log("error : ", err);
   console.log("Example app listening on port port!");

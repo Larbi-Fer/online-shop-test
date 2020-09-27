@@ -70,3 +70,21 @@ exports.getFirstProduct = () => {
             .catch(err => reject(err))
     })
 }
+
+
+exports.addProduct = (object, imgName) => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => {
+            let product = new product({
+                name: object.name,
+                image: imgName,
+                price: object.price,
+                description: object.description,
+                category: object.category
+            })
+        }).then(prosucts => {
+            mongoose.disconnect()
+            resolve(prosucts)
+        }).catch(err => reject(err))
+    })
+}
