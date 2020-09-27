@@ -19,7 +19,8 @@ exports.getHome = (req, res, next) => {
             products: products,
             isUser: req.session.userId,
             isAdmin: req.session.isAdmin,
-            validationError: req.flash('validationError')[0]
+            validationError: req.flash('validationError')[0],
+            pageTitle: 'Home'
         })
     })
 }

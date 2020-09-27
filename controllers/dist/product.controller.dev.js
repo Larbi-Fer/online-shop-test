@@ -10,7 +10,8 @@ exports.getProduct = function (req, res, next) {
     res.render('product', {
       product: product,
       isUser: req.session.userId,
-      isAdmin: req.session.isAdmin
+      isAdmin: req.session.isAdmin,
+      pageTitle: "Product: " + product.name
     });
   });
 };
@@ -24,7 +25,8 @@ exports.getProductById = function (req, res, next) {
     res.render('product', {
       product: product,
       isUser: req.session.userId,
-      isAdmin: req.session.isAdmin
+      isAdmin: req.session.isAdmin,
+      pageTitle: "Product: " + product.name
     });
   });
 };

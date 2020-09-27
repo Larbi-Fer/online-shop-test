@@ -15,7 +15,8 @@ exports.getSingup = function (req, res, next) {
     authError: req.flash("authError"),
     validationErrors: req.flash("validationError"),
     isUser: false,
-    isAdmin: false
+    isAdmin: false,
+    pageTitle: 'Singup'
   });
   error = "";
   errors = "";
@@ -71,7 +72,8 @@ exports.getLogin = function (req, res, next) {
   res.render('login', {
     authError: req.flash("authError"),
     isUser: false,
-    isAdmin: false
+    isAdmin: false,
+    pageTitle: 'Login'
   });
   error = "";
 };

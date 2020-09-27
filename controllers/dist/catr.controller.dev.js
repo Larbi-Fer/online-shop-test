@@ -10,10 +10,11 @@ exports.getCart = function (req, res, next) {
       items: items,
       valisationErrors: req.flash("valisationErrors"),
       isUser: true,
-      isAdmin: req.session.isAdmin
+      isAdmin: req.session.isAdmin,
+      pageTitle: 'Cart'
     });
   })["catch"](function (err) {
-    console.log(err);
+    next(err);
   });
 };
 
@@ -41,7 +42,7 @@ exports.postCart = function (req, res, next) {
     }).then(function () {
       res.redirect('/cart');
     })["catch"](function (err) {
-      console.log(err);
+      next(err);
     });
   } else {
     req.flash('validationError', r);

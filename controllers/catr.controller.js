@@ -7,10 +7,11 @@ exports.getCart = (req, res, next) => {
             items: items,
             valisationErrors: req.flash("valisationErrors"),
             isUser: true,
-            isAdmin: req.session.isAdmin
+            isAdmin: req.session.isAdmin,
+            pageTitle: 'Cart'
         })
     }).catch(err => {
-        console.log(err);
+        next(err)
     })
 }
 
@@ -38,7 +39,7 @@ exports.postCart = (req, res, next) => {
         }).then(() => {
             res.redirect('/cart')
         }).catch(err => {
-            console.log(err)
+            next(err)
         })
     } else {
         req.flash('validationError', r)

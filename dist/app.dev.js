@@ -43,10 +43,21 @@ app.use('/product', productRouter);
 app.use('/cart', cartRouter);
 app.use('/admin', adminRouter);
 app.get('/error', function (req, res, next) {
+  res.status(500);
   res.render('error.ejs', {
     isUser: req.session.userId,
     isAdmin: req.session.isAdmin
   });
+});
+app.get('/not-admin', function (req, res, next) {
+  res.status(403);
+  res.render('not-admin', {
+    isUser: req.session.userId,
+    isAdmin: false
+  });
+});
+app.use(function (error, req, res, next) {
+  res.redirect('/error');
 });
 app.listen(port, function (err) {
   console.log("error : ", err);

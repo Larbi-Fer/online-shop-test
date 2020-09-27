@@ -5,17 +5,17 @@
         </label>
     <label for="" class="logo">online shope</label>
     <ul>
-        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/" <%= pageTitle === 'Home' ? 'class=active': '' %>>Home</a></li>
         <% if (isUser) { %>
-            <li><a href="/cart">Cart</a></li>
-            <li><a href="/orders">Orders</a></li>
+            <li><a href="/cart" <%= pageTitle === 'Cart' ? 'class=active': '' %>>Cart</a></li>
+            <li><a href="/orders" <%= pageTitle === 'Orders' ? 'class="active"': '' %>>Orders</a></li>
         <% } else { %>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/singup">Singup</a></li>
+            <li><a href="/login" <%= pageTitle === 'Login' ? 'class=active': '' %>>Login</a></li>
+            <li><a href="/singup" <%= pageTitle === 'Singup' ? 'class=active': '' %>>Singup</a></li>
         <% } %>
         <% if (isAdmin) { %>
-            <li><a href="/admin/add">Add Product</a></li>
-            <li><a href="/admin/orders">Manage Orders</a></li>
+            <li><a href="/admin/add" <%= pageTitle === 'add Product' ? 'class=active': '' %>>Add Product</a></li>
+            <li><a href="/admin/orders" <%= pageTitle === 'Manage Orders' ? 'class=active': '' %>>Manage Orders</a></li>
         <% } %>
         <% if (isUser) { %>
             <li><a href="/logout" style="color: rgb(255, 159, 167); background: #cf1800;">Logout</a></li>
