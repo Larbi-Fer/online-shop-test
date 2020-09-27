@@ -10,7 +10,7 @@
             <%= validationErrors %> 
         </div>
     <% } %>
-    <form action="/admin/add" method="POST">
+    <form action="/admin/add" method="POST" enctype="multipart/form-data">
 
         <div class="input-field">
             <input type="text" name="name" required>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="input-field">
-            <select type="text" name="category" required>
+            <select name="category" required>
                 <option value="clothes">Clothes</option>
                 <option value="phones">Phones</option>
                 <option value="computers">Computers</option>
