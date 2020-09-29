@@ -11,6 +11,7 @@ const productRouter = require('./routes/product.router')
 const authRouter = require('./routes/auth.router')
 const cartRouter = require('./routes/cart.router')
 const adminRouter = require('./routes/admin.router')
+const orderRouter = require('./routes/order.router')
 
 const app = express()
 const port = 3000
@@ -39,12 +40,14 @@ app.use('/', authRouter)
 app.use('/product', productRouter)
 app.use('/cart', cartRouter)
 app.use('/admin', adminRouter)
+app.use('/orders', orderRouter)
 
 app.get('/error', (req, res, next) => {
     res.status(500)
     res.render('error.ejs', {
         isUser: req.session.userId,
-        isAdmin: req.session.isAdmin
+        isAdmin: req.session.isAdmin,
+        pageTitle: "error"
     })
 })
 
@@ -52,12 +55,24 @@ app.get('/not-admin', (req, res, next) => {
     res.status(403)
     res.render('not-admin', {
         isUser: req.session.userId,
-        isAdmin: false
+        isAdmin: false,
+        pageTitle: "Not admin"
     })
 })
 
 app.use((error, req, res, next) => {
-    res.redirect('/error')
+    //res.redirect('/error')
+    res.status(500)
+    res.render('error.ejs', {
+        isUser: req.session.userId,
+        isAdmin: req.session.isAdmin,
+        pageTitle: "error",
+        err: error
+    })
+})
+
+app.use((req, res, next) => {
+    res.send("page Not Found")
 })
 
 app.listen(port, (err) => {

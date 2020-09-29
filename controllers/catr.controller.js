@@ -8,9 +8,11 @@ exports.getCart = (req, res, next) => {
             valisationErrors: req.flash("valisationErrors"),
             isUser: true,
             isAdmin: req.session.isAdmin,
-            pageTitle: 'Cart'
+            pageTitle: 'Cart',
+            id: req.session.userId
         })
     }).catch(err => {
+        console.log(err)
         next(err)
     })
 }
@@ -39,6 +41,7 @@ exports.postCart = (req, res, next) => {
         }).then(() => {
             res.redirect('/cart')
         }).catch(err => {
+            console.log(err)
             next(err)
         })
     } else {

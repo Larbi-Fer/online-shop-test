@@ -1,60 +1,8 @@
+<link rel="stylesheet" href="css/massege.css">
+<link rel="stylesheet" href="css/auth.css">
 <%- include('parts/header.ejs') %>
 <%- include('parts/navbar.ejs') %>
-
-<style>
-    td {
-        padding: 1px 20px;
-        color: #fff;
-        font-size: 16px;
-        font-weight: 500;
-        text-align: left;
-        max-width: 16%;
-        min-width: 90px;
-    }
-    
-    td:last-child {
-        width: 100%;
-        text-align: right;
-        padding-right: 30%;
-    }
-    
-    td:first-child {
-        max-width: 10px !important;
-    }
-    
-    thead * {
-        color: #ff1500;
-    }
-    
-    tbody {
-        background: #424242;
-        border-radius: 20px;
-    }
-    
-    tbody tr:first-child td:first-child {
-        border-top-left-radius: 15px;
-        /*border-bottom-left-radius: 15px;*/
-    }
-    
-    tbody tr:first-child td:last-child {
-        border-top-right-radius: 15px;
-        /*border-bottom-right-radius: 15px;*/
-    }
-
-    tbody tr:last-child td:first-child {
-        /* border-top-left-radius: 15px; */
-        border-bottom-left-radius: 15px;
-    }
-    
-    tbody tr:last-child td:last-child {
-        /* border-top-right-radius: 15px; */
-        border-bottom-right-radius: 15px;
-    }
-    
-    td:last-child button[type=submit] {
-        margin-left: 20px;
-    }
-</style>
+<link rel="stylesheet" href="css/Table.css">
 
 <div class="containe">
     <% if (items.length === 0) { %>
@@ -86,6 +34,7 @@
                             <td>
                                 <input type="hidden" name="cartId" value="<%= items[i]._id %>">
                                 <button type="submit" class="btn-pr" formaction="/cart/save">Save</button>
+                                <button type="button" class="btn-pr" data-id="order" id="btn-messge" data="<%= items[i].name + "," + items[i].amount + ',' + items[i]._id + "," + id %>">Orders</button>
                                 <button type="submit" class="btn-pr" style="background: #f54;" formaction="/cart/delete">Delet</button>
                             </td>
                         </form>
@@ -99,4 +48,23 @@
 
 </div>
 
+
+
+<div class="mm" id="order">
+    <form class="messge-btn black" action="/orders" method="POST" style="width: 40%">
+        <div class="title">
+            Address
+        </div>
+        <div class="messge-M" id="1ad58s7r1ft6s48zg4a1">
+            
+        </div>
+        <div class="bottom-messge">
+            <button type="submit">OK</button>
+            <button type="button" id="clous" class="sss">Censel</button>
+        </div>
+    </form>
+    <div id="clous" class="blur"></div>
+</div>
+
+<script src="js/massege.js"></script>
 <%- include('parts/footer.ejs') %>

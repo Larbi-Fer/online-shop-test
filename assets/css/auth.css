@@ -35,15 +35,15 @@ option:checked {
     text-align: center;
 }
 
-.login .input-field {
+.input-field {
     position: relative;
     padding-top: 10px;
     overflow: hidden;
 }
 
-.login .input-field textarea,
-.login .input-field select,
-.login .input-field input {
+.input-field textarea,
+.input-field select,
+.input-field input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -55,7 +55,7 @@ option:checked {
     border-bottom: 1px solid #fff;
 }
 
-.login .input-field span {
+.input-field span {
     background: #0c409c;
     width: 100%;
     height: 2px;
@@ -66,16 +66,16 @@ option:checked {
     transition: .7s ease-in-out;
 }
 
-.login .input-field textarea:focus~span,
-.login .input-field textarea:valid~span,
-.login .input-field select:focus~span,
-.login .input-field select:valid~span,
-.login .input-field input:focus~span,
-.login .input-field input:valid~span {
+.input-field textarea:focus~span,
+.input-field textarea:valid~span,
+.input-field select:focus~span,
+.input-field select:valid~span,
+.input-field input:focus~span,
+.input-field input:valid~span {
     transform: translate(0%);
 }
 
-.login .input-field label {
+.input-field label {
     position: absolute;
     top: 0;
     left: 0;
@@ -86,20 +86,21 @@ option:checked {
     transition: .5s;
 }
 
-.login .input-field textarea:focus~label,
-.login .input-field textarea:valid~label,
-.login .input-field select:focus~label,
-.login .input-field select:valid~label,
-.login .input-field-foc label,
-.login .input-field input:focus~label,
-.login .input-field input:valid~label {
+.input-field textarea:focus~label,
+.input-field textarea:valid~label,
+.input-field select:focus~label,
+.input-field select:valid~label,
+.input-field-foc label,
+.input-field input:focus~label,
+.input-field input:valid~label {
     top: -20px;
     left: 0;
     color: #03a9f4;
     font-size: 11px;
 }
 
-.login button[type="submit"] {
+button[type="button"],
+button[type="submit"] {
     background-color: transparent;
     border: none;
     outline: none;

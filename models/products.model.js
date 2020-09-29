@@ -72,16 +72,11 @@ exports.getFirstProduct = () => {
 }
 
 
-exports.addProduct = (object, imgName) => {
+exports.addNewProduct = (data) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL).then(() => {
-            let product = new product({
-                name: object.name,
-                image: imgName,
-                price: object.price,
-                description: object.description,
-                category: object.category
-            })
+            let Newproduct = new Product(data)
+            return Newproduct.save()
         }).then(prosucts => {
             mongoose.disconnect()
             resolve(prosucts)
