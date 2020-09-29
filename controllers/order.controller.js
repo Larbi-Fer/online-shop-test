@@ -22,8 +22,8 @@ exports.postOrders = (req, res, next) => {
         amount: req.body.amount,
         address: req.body.address,
         status: "Pending",
-        time: Date.now()
-    }, req.body.id).then(() => {
+        time: new Date().toLocaleTimeString()
+    }, req.body.id, req.session.userId).then((i) => {
         res.redirect("/orders")
     }).catch(err => {
         console.log(err);

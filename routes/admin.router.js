@@ -20,4 +20,7 @@ router.post('/add', adminGuard, multer({
     })
 }).single("image"), bodyParser.urlencoded({ extended: true }), admineController.postAdd)
 
+
+router.get('/orders', adminGuard, admineController.getOrders)
+
 module.exports = router

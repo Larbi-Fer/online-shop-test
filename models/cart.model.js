@@ -17,6 +17,7 @@ const CartItem = mongoose.model("cart", cartSchema)
 const orderSchema = mongoose.Schema({
     name: String,
     userId: String,
+    email: String,
     amount: String,
     address: String,
     status: String,
@@ -24,6 +25,8 @@ const orderSchema = mongoose.Schema({
 })
 
 const OrderItem = mongoose.model("oreser", orderSchema)
+
+const UserItem = require('./auth.model').user
 
 
 
@@ -89,22 +92,38 @@ exports.deleteItem = (id) => {
 }
 
 
-exports.addNewOrder = (data, id) => {
+exports.addNewOrder = (data, Productid, userId) => {
     return new Promise(((resolve, reject) => {
         mongoose.connect(DB_URL).then(() => {
-            let NewOrder = new OrderItem(data)
-            CartItem.deleteOne({ _id: id }).catch(err => {
+            CartItem.deleteOne({ _id: Productid }).catch(err => {
                 next(err)
             })
-            console.log(id)
-            return NewOrder.save()
-        }).then(item => {
-            mongoose.disconnect()
-            resolve(item)
-        }).catch(err => {
-            mongoose.disconnect()
-            console.log("error: ", err)
-            reject(err)
+            let email;
+            var dataa;
+            UserItem.findById(userId).then(user => {
+                email = user.email
+                dataa = {
+                    name: data.name,
+                    userId: data.userId,
+                    email: email,
+                    amount: data.amount,
+                    address: data.address,
+                    status: "Pending",
+                    time: data.time
+                }
+                let NewOrder = new OrderItem(dataa)
+                NewOrder.save().then(item => {
+                    mongoose.disconnect()
+                    resolve(item)
+                }).catch(err => {
+                    mongoose.disconnect()
+                    console.log("error: ", err)
+                    reject(err)
+                })
+            }).catch(err => {
+                console.log(err);
+                reject(err)
+            })
         })
     }))
 }
@@ -138,6 +157,31 @@ exports.deleteOrderById = (id) => {
             }).catch(err => {
                 reject(err)
             })
+        })
+    })
+}
+
+
+exports.getAllOrders = (userId) => {
+    return new Promise((resolve, reject) => {
+        var email
+        mongoose.connect(DB_URL).then(() => {
+            UserItem.findById(userId).then(item => {
+                email = item.email
+            }).catch(err => {
+                mongoose.disconnect()
+                reject(err)
+            })
+            return OrderItem.find({})
+        }).then(items => {
+            mongoose.disconnect()
+            resolve({
+                items: items,
+                email: email
+            })
+        }).catch(err => {
+            mongoose.disconnect()
+            reject(err)
         })
     })
 }

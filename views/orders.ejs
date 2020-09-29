@@ -6,6 +6,7 @@
 <style>
     .btn-disabled{
         opacity: 0.7;
+        cursor: no-drop !important;
     }
 </style>
 
@@ -29,8 +30,11 @@
                 <td><%= orders[i].status %></td>
                 <td><%= orders[i].time %></td>
                 <form action="/orders/Cancel" method="POST">
-                    <input type="hidden" name="id" value="<%= orders[i]._id %>">
-                    <td><button type="submit" <%= orders[i].status != "Pending" ? "disabled class=btn-disabled": "" %> class="btn-pr" style="background: #f54; margin: 6px">Cancel</button></td>
+                    <% const b = orders[i].status == "Pending"
+                    if ( b ) { %>
+                        <input type="hidden" name="id" value="<%= orders[i]._id %>">
+                    <% } %>
+                    <td><button <%= !b ? "disabled type=button class=btn-disabled": "type=submit" %> class="btn-pr" style="background: #f54; margin: 6px">Cancel</button></td>
                 </form>
             </tr>
         <% } %>

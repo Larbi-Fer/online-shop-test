@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="/css/kalebe.css">
+<link rel="stylesheet" href="/css/auth.css">
+<%- include('parts/header.ejs') %>
+<%- include('parts/navbar.ejs') %>
+<link rel="stylesheet" href="/css/Table.css">
+
+<div class="container" style="height: auto;">
+    <form method="get" action="/admin/orders">
+        <button type="submit" name="category" value="all">All</button>
+        <button type="submit" name="category" value="Pending">Pending</button>
+        <button type="submit" name="category" value="send">Send</button>
+        <button type="submit" name="category" value="completed">Completed</button><br>
+        <div class="input-field">
+            <input type="text" name="E-mail" id="email" required>
+            <label for="email">E-mail</label>
+            <span></span>
+        </div>
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+    <Table>
+
+        <thead>
+            <td>no</td>
+            <td>E-mail</td>
+            <td>Product name</td>
+            <td>amount</td>
+            <td>address</td>
+            <td>status</td>
+            <td>time</td>
+            <td></td>
+        </thead>
+    
+        <tbody>
+            <% for( let i = 0; i < orders.length; i++ ) { %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%=  orders[i].email %></td>
+                    <td><%= orders[i].name %></td>
+                    <td><%= orders[i].amount %></td>
+                    <td><%= orders[i].address %></td>
+                    <td>
+                        <select name="status" id="status">
+                            <option value="pending" <%= orders[i].status == "Pending" ? "selected" : "" %>>Pending</option>
+                            <option value="send" <%= orders[i].status == "send" ? "selected" : "" %>>Send</option>
+                            <option value="completed" <%= orders[i].status == "completed" ? "selected" : "" %>>Completed</option>
+                        </select>
+                    </td>
+                    <td><%= orders[i].time %></td>
+                    <form action="/orders/Cancel" method="POST">
+                        <input type="hidden" name="id" value="<%= orders[i]._id %>">
+                        <td><button type="submit" class="btn-pr" style="margin: 6px">Save</button></td>
+                    </form>
+                </tr>
+            <% } %>
+        </tbody>
+    
+    </Table>
+
+
+<%- include('parts/footer.ejs') %>

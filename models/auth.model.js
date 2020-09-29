@@ -87,3 +87,5 @@ exports.login = (email, password) => {
         })
     })
 }
+
+exports.user = User
