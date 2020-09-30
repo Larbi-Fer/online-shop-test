@@ -23,4 +23,6 @@ router.post('/add', adminGuard, multer({
 
 router.get('/orders', adminGuard, admineController.getOrders)
 
+router.post('/orders/save', bodyParser.urlencoded({ extended: true }), adminGuard, admineController.saveOrder)
+
 module.exports = router

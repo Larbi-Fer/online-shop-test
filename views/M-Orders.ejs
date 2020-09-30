@@ -7,11 +7,13 @@
 <div class="container" style="height: auto;">
     <form method="get" action="/admin/orders">
         <button type="submit" name="category" value="all">All</button>
-        <button type="submit" name="category" value="Pending">Pending</button>
+        <button type="submit" name="category" value="pending">Pending</button>
         <button type="submit" name="category" value="send">Send</button>
         <button type="submit" name="category" value="completed">Completed</button><br>
+    </form>
+    <form method="get" action="/admin/orders">
         <div class="input-field">
-            <input type="text" name="E-mail" id="email" required>
+            <input type="text" name="q" id="email" required>
             <label for="email">E-mail</label>
             <span></span>
         </div>
@@ -37,20 +39,22 @@
                 <tr>
                     <td><%= i + 1 %></td>
                     <td><%=  orders[i].email %></td>
-                    <td><%= orders[i].name %></td>
+                        <td><%= orders[i].name %></td>
                     <td><%= orders[i].amount %></td>
                     <td><%= orders[i].address %></td>
-                    <td>
-                        <select name="status" id="status">
-                            <option value="pending" <%= orders[i].status == "Pending" ? "selected" : "" %>>Pending</option>
-                            <option value="send" <%= orders[i].status == "send" ? "selected" : "" %>>Send</option>
-                            <option value="completed" <%= orders[i].status == "completed" ? "selected" : "" %>>Completed</option>
-                        </select>
-                    </td>
-                    <td><%= orders[i].time %></td>
-                    <form action="/orders/Cancel" method="POST">
-                        <input type="hidden" name="id" value="<%= orders[i]._id %>">
-                        <td><button type="submit" class="btn-pr" style="margin: 6px">Save</button></td>
+                    <form method="POST">
+                        <td>
+                            <select name="status" id="status">
+                                <option value="pending" <%= orders[i].status == "pending" ? "selected" : "" %>>Pending</option>
+                                <option value="send" <%= orders[i].status == "send" ? "selected" : "" %>>Send</option>
+                                <option value="completed" <%= orders[i].status == "completed" ? "selected" : "" %>>Completed</option>
+                            </select>
+                        </td>
+                        <td><%= orders[i].time %></td>
+                        <td>
+                            <input type="hidden" name="id" value="<%= orders[i]._id %>">
+                            <button type="submit" class="btn-pr" style="margin: 6px" formaction="/admin/orders/save">Save</button>
+                        </td>
                     </form>
                 </tr>
             <% } %>

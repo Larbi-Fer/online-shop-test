@@ -27,14 +27,33 @@ exports.postAdd = (req, res, next) => {
 }
 
 exports.getOrders = (req, res, next) => {
-    cartModel.getAllOrders(req.session.userId).then(items => {
+    let promctsPromise
+    var validCategories = ["pending", "send", "completed"]
+    var category = req.query.category
+    var emailQuery = req.query.q
+    if (category && validCategories.includes(category)) promctsPromise = cartModel.getOrdersbyStatus(category)
+    else if (emailQuery) promctsPromise = cartModel.getOrdersByEmail(emailQuery)
+    else promctsPromise = cartModel.getAllOrders(req.session.userId)
+
+    promctsPromise.then(items => {
         res.render("M-Orders", {
             isAdmin: true,
             isUser: true,
             pageTitle: "Manage Orders",
-            orders: items.items,
-            email: items.email
+            orders: items
         })
+    }).catch(err => {
+        console.log(err);
+        next(err)
+    })
+
+}
+
+exports.saveOrder = (req, res, next) => {
+    cartModel.editOrder(req.body.id, {
+        status: req.body.status
+    }).then(() => {
+        res.redirect('/admin/orders')
     }).catch(err => {
         console.log(err);
         next(err)

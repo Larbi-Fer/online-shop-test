@@ -21,7 +21,6 @@ exports.postOrders = (req, res, next) => {
         userId: req.body.userId,
         amount: req.body.amount,
         address: req.body.address,
-        status: "Pending",
         time: new Date().toLocaleTimeString()
     }, req.body.id, req.session.userId).then((i) => {
         res.redirect("/orders")

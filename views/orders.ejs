@@ -30,7 +30,7 @@
                 <td><%= orders[i].status %></td>
                 <td><%= orders[i].time %></td>
                 <form action="/orders/Cancel" method="POST">
-                    <% const b = orders[i].status == "Pending"
+                    <% const b = orders[i].status == "pending"
                     if ( b ) { %>
                         <input type="hidden" name="id" value="<%= orders[i]._id %>">
                     <% } %>

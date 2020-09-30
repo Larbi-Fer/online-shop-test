@@ -108,7 +108,7 @@ exports.addNewOrder = (data, Productid, userId) => {
                     email: email,
                     amount: data.amount,
                     address: data.address,
-                    status: "Pending",
+                    status: "pending",
                     time: data.time
                 }
                 let NewOrder = new OrderItem(dataa)
@@ -164,21 +164,54 @@ exports.deleteOrderById = (id) => {
 
 exports.getAllOrders = (userId) => {
     return new Promise((resolve, reject) => {
-        var email
         mongoose.connect(DB_URL).then(() => {
-            UserItem.findById(userId).then(item => {
-                email = item.email
-            }).catch(err => {
-                mongoose.disconnect()
-                reject(err)
-            })
             return OrderItem.find({})
         }).then(items => {
             mongoose.disconnect()
-            resolve({
-                items: items,
-                email: email
-            })
+            resolve(items)
+        }).catch(err => {
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+
+exports.getOrdersbyStatus = (status) => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => {
+            return OrderItem.find({ status: status })
+        }).then(items => {
+            mongoose.disconnect()
+            resolve(items)
+        }).catch(err => {
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+
+exports.getOrdersByEmail = (email) => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => {
+            return OrderItem.find({ email: email })
+        }).then(items => {
+            mongoose.disconnect()
+            resolve(items)
+        }).catch(err => {
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+
+
+exports.editOrder = (id, newData) => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => {
+            return OrderItem.updateOne({ _id: id }, newData)
+        }).then(items => {
+            mongoose.disconnect()
+            resolve(items)
         }).catch(err => {
             mongoose.disconnect()
             reject(err)
