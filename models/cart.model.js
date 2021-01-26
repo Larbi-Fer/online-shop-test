@@ -148,7 +148,7 @@ exports.deleteOrderById = (id) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL).then(() => {
             OrderItem.findById(id).then(item => {
-                if (item.status == "Pending") {
+                if (item.status == "pending") {
                     return OrderItem.deleteOne({ _id: id })
                 }
             }).then(resl => {

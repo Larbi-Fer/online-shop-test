@@ -29,17 +29,34 @@
                 <td><%= orders[i].address %></td>
                 <td><%= orders[i].status %></td>
                 <td><%= orders[i].time %></td>
-                <form action="/orders/Cancel" method="POST">
+                <!--<form action="/orders/Cancel" method="POST">-->
                     <% const b = orders[i].status == "pending"
                     if ( b ) { %>
                         <input type="hidden" name="id" value="<%= orders[i]._id %>">
                     <% } %>
-                    <td><button <%= !b ? "disabled type=button class=btn-disabled": "type=submit" %> class="btn-pr" style="background: #f54; margin: 6px">Cancel</button></td>
-                </form>
+                    <td><button onclick="save('<%= orders[i]._id %>')" <%= !b ? "disabled type=button class=btn-disabled": "type=submit" %> class="btn-pr" style="background: #f54; margin: 6px">Cancel</button></td>
+                <!--</form>-->
             </tr>
         <% } %>
     </tbody>
 
 </Table>
+
+<script src="js/JQ.js"></script>
+<script>
+    function save(id) {
+        $.ajax({
+        url: '/orders/Cancel',
+        method: 'post',
+        beforeSend(){
+            //toogl( true );
+        },
+        data:{id: id},
+        success:function(data){
+            // -----
+        }
+    });
+    }
+</script>
 
 <%- include('parts/footer.ejs') %>

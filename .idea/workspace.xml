@@ -17,16 +17,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7eae1f2c-4adf-472b-842a-393fe042e24d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/auth.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/dist/auth.controller.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/dist/auth.controller.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/app.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/checkValue.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/checkValue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/dist/checkValue.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/dist/checkValue.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/singup.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/singup.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Run_Server.bat" beforeDir="false" afterPath="$PROJECT_DIR$/Run_Server.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/R4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601205804943-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601205862644-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601205866748-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601208912404-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601209139606-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601209157547-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601209361253-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601209564754-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601209627284-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601209780086-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601209801014-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601209810250-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601209889003-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601209900341-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601209948673-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601210033699-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601210116609-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601210218161-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601210788821-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601210818806-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601210860094-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601210920963-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601210956656-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601211675310-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601211694070-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601211710366-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601211772560-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601211813114-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601211869047-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601211887773-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601211996368-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601212089321-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601212742586-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1601212961467-20200730_140022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/cart.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/cart.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/cart.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/cart.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/orders.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/orders.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +87,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601031696212</updated>
       <workItem from="1601031709947" duration="956000" />
+      <workItem from="1602186997758" duration="14000" />
     </task>
     <servers />
   </component>
@@ -85,6 +116,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="220" y="164" width="1182" height="529" key="DiffContextDialog" timestamp="1601033628560">
